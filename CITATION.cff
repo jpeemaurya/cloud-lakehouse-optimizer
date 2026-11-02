@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the paper and this repository."
+title: "cloud-lakehouse-optimizer"
+abstract: >-
+  Reproducibility code for "A hierarchical workload-aware optimization framework for
+  Cloud-Based Big Data Analytics Using Parquet and Delta Lake".
+type: software
+version: 1.0.0
+license: MIT
+date-released: "2026-11-02"
+repository-code: "https://github.com/<github-username>/cloud-lakehouse-optimizer"  # TODO
+# doi: 10.5281/zenodo.XXXXXXX   # TODO after the Zenodo release
+authors:
+  - family-names: Maurya
+    given-names: Jay Prakash
+    email: jpeemaurya@gmail.com
+    affiliation: "School of Computing Science & Engineering (SCOPE), VIT Bhopal University"
+  - family-names: Trivedi
+    given-names: Vijay Kumar
+    affiliation: "School of Computing Science & Engineering (SCOPE), VIT Bhopal University"
+  - family-names: Chandrawanshi
+    given-names: Kamlesh
+    affiliation: "School of Computing Science & Engineering (SCOPE), VIT Bhopal University"
+keywords: [cloud analytics, Apache Parquet, Delta Lake, Liquid Clustering, Spark, big data]

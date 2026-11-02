@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cloud-lakehouse-optimizer"
+version = "1.0.0"
+description = "Reproducibility code: hierarchical workload-aware optimization for cloud big data analytics (Parquet, Delta Lake)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Jay Prakash Maurya", email = "jpeemaurya@gmail.com" },
+  { name = "Vijay Kumar Trivedi" },
+  { name = "Kamlesh Chandrawanshi" },
+]
+dependencies = [
+  "pyspark==3.5.1",
+  "delta-spark==3.2.0",
+  "pandas>=2.0",
+  "pyarrow>=14",
+  "pyyaml>=6",
+  "kaggle>=1.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = ["spark: needs a local Spark session (JVM)"]

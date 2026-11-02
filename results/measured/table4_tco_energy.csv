@@ -1,0 +1,5 @@
+Framework Configuration,Monthly Storage Cost ($),Compute Execution Cost per 10k Queries ($),Total Monthly TCO ($),Energy Consumption per 10k Queries (kWh)
+Legacy HDFS / CSV (16 Nodes),2.76,172.4,175.16,142.6
+Spark / Parquet (16 Nodes),0.61,27.5,28.11,22.8
+Serverless Delta Lake (16 Nodes),0.51,18.2,18.71,15.1
+Serverless Delta Lake Auto-Scale (4-32 Nodes),0.51,11.4,11.91,9.5

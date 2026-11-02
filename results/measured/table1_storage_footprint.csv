@@ -1,0 +1,5 @@
+Storage Format,Compression Algorithm,Uncompressed Size (GB),Compressed Footprint (GB),Compression Ratio,Metadata Indexing Strategy
+Raw CSV,None,120,120,1.00x,None (Full Table Scan)
+Apache Parquet,Snappy,120,26.4,4.54x,Min/Max Footer Statistics
+Apache Parquet,Zstandard (zstd),120,19.8,6.06x,Min/Max Footer + Bloom Filters
+Delta Lake (Liquid 3.0+),Snappy + Z-Order,120,22.1,5.43x,Predictive Optimization Log

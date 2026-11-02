@@ -1,0 +1,9 @@
+Cluster Scale,Storage Format,Peak Read Throughput (MB/s),Inter-Node Shuffle Volume (GB),Disk Shuffle Spill (GB),CPU Utilization (%)
+4 Nodes,Parquet,420.5,18.4,6.2,94.2
+4 Nodes,Delta Lake,510.8,14.1,2.1,91.8
+16 Nodes,Parquet,1580.2,19.2,0,88.4
+16 Nodes,Delta Lake,1940.6,14.8,0,85.1
+32 Nodes,Parquet,2950.4,21.5,0,76.3
+32 Nodes,Delta Lake,3620.1,16.2,0,71.9
+64 Nodes,Parquet,3890,28.9,0,58.2
+64 Nodes,Delta Lake,4710.3,22.4,0,52.4

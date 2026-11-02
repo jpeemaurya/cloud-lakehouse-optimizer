@@ -1,0 +1,3 @@
+# SHA-256 of downloaded raw files. Verify with: sha256sum -c data/checksums.sha256
+# Regenerate with: python scripts/download_data.py --write-checksums
+# (No digests yet: they are created by the first real download. See data/README_DATA.md.)

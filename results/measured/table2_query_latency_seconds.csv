@@ -1,0 +1,13 @@
+Scale (Nodes),Format,Query A (Selective Filter),Query B (Group-By Aggregation),Query C (Complex Join & Window)
+4,CSV,184.2,412.5,890.1
+4,Parquet (Snappy),24.1,68.3,142.6
+4,Delta Lake,14.2,52.1,118.4
+16,CSV,51.6,118.9,245.3
+16,Parquet (Snappy),6.8,18.5,39.2
+16,Delta Lake,3.9,13.8,31
+32,CSV,28.4,64.2,138.7
+32,Parquet (Snappy),3.6,9.9,21.4
+32,Delta Lake,2.1,7.4,16.5
+64,CSV,19.8,48.1,102.5
+64,Parquet (Snappy),2.9,7.8,17.1
+64,Delta Lake,1.8,5.9,13.2

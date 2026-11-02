@@ -1,0 +1,65 @@
+# Central configuration for the cloud-lakehouse-optimizer repository.
+# All relative paths are resolved against the directory containing this file.
+
+seed: 42
+
+paths:
+  raw_dir: data/raw
+  sample_dir: data/sample
+  lake_dir: data/lake            # converted Parquet / Delta output (git-ignored)
+  schema_dir: data/schema        # schema + inferred column roles (JSON)
+  results_dir: results
+  checksums: data/checksums.sha256
+
+kaggle:
+  # Sources cited in the paper (references [10] and [11]).
+  # kind=dataset -> files are downloaded; kind=kernel -> the notebook source is pulled.
+  sources:
+    - name: tech_ai_companies_market_data_2024
+      kind: dataset
+      slug: imaadmahmood/tech-and-ai-companies-market-data-2024
+    - name: customer_segmentation_pyspark
+      kind: kernel
+      slug: mohammedobeidat/customer-segmentation-with-pyspark
+
+data:
+  primary_source: tech_ai_companies_market_data_2024   # which source feeds the benchmark
+  input_file: null          # explicit CSV path; null = largest *.csv under raw_dir/<primary_source>
+  sample_max_mb: 5          # upper bound for data/sample/sample.csv
+  schema_probe_rows: 50000  # rows used to infer column roles
+
+# Column roles used by the three workloads. Leave null to infer them from the real
+# file's schema (data_io.infer_roles). Set explicitly to override. Names are the
+# *normalised* (snake_case) column names written to data/schema/<name>.json.
+columns:
+  time: null        # timestamp/date column (optional; enables time-bucketed aggregation)
+  key: null         # high-cardinality id used by Query A (point filter) and Query C (join)
+  category: null    # low-cardinality categorical column (group-by / window partition)
+  category2: null   # optional second categorical column (multi-dimensional group-by)
+  measure: null     # numeric measure to aggregate
+  measure2: null    # optional second numeric measure
+
+spark:
+  app_name: cloud-lakehouse-optimizer
+  master: "local[*]"
+  driver_memory: 4g
+  shuffle_partitions: 64
+  extra_conf: {}
+
+formats:
+  parquet_snappy:
+    codec: snappy
+  parquet_zstd:
+    codec: zstd
+  delta:
+    compression: snappy
+    layout: liquid          # liquid = Liquid Clustering (Delta >= 3.1); zorder = OPTIMIZE ... ZORDER BY
+    cluster_by: []          # empty = [key, time] resolved from the inferred roles
+
+workloads:
+  point_filter:             # Query A
+    filter_value: null      # null = pick a key value with median frequency (deterministic)
+  groupby:                  # Query B
+    time_grain: month       # any date_trunc() unit: year | quarter | month | week | day
+  join_window:              # Query C
+    top_n: 10

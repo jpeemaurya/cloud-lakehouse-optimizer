@@ -1,0 +1,10 @@
+name: lakehouse
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - openjdk=17          # Spark 3.5 needs Java 8/11/17
+  - pip
+  - pip:
+      - -r requirements.txt
+      - -e .
